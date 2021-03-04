@@ -1,6 +1,8 @@
 const express = require('express')
 const prom = require('prom-client')
 
+const PORT = 5000
+
 const app = express()
 const registry = new prom.Registry()
 prom.collectDefaultMetrics({ register: registry })
@@ -25,6 +27,6 @@ app.get('/metrics', async (req, res) => {
     res.send(metrics)
 })
 
-app.listen(5000, () => {
-    console.log('Listening...')
+app.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}...`)
 })
