@@ -2,8 +2,7 @@ const express = require('express')
 const prom = require('prom-client')
 
 const app = express()
-const Registry = prom.Registry
-const registry = new Registry()
+const registry = new prom.Registry()
 prom.collectDefaultMetrics({ register: registry })
 
 app.use((req, res, next) => {
